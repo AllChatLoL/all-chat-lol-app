@@ -14,9 +14,10 @@ import shutil
 # Configure pandas to use the new behavior for fillna operations
 pd.set_option('future.no_silent_downcasting', True)
 
-# Authenticate with Google Sheets
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+# Authenticate with Google Sheets
+creds_dict = st.secrets["gcp_service_account"]
+creds = ServiceAccountCredentials.from_json_keyfile_dict(dict(creds_dict), scope)
 client = gspread.authorize(creds)
 
 # League sheet names
