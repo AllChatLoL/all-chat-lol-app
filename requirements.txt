@@ -1,0 +1,6 @@
+streamlit
+gspread
+oauth2client
+pandas
+numpy
+shutil
